@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partyline: Free online invitations & greeting cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#fbfaff;--surface:#fff;--ink:#1b1b3a;--muted:#5d5d7a;--line:#e5e2f3;--lilac:#cdb9ff;--lemon:#ffe66d;--mint:#bfebd7;--pink:#ffb3c8;--accent:#4b2bd6;--accent-ink:#fff;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14132b;--surface:#1e1d3d;--ink:#f3f1ff;--muted:#a9a7c9;--line:#34325c;--accent:#b9a4ff;--accent-ink:#14132b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14132b;--surface:#1e1d3d;--ink:#f3f1ff;--muted:#a9a7c9;--line:#34325c;--accent:#b9a4ff;--accent-ink:#14132b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.bar{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font:800 24px "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:-.03em}
+nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+nav a{padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:500;white-space:nowrap}
+nav a:hover{background:var(--line)}
+.btn{display:inline-block;border:0;border-radius:999px;padding:12px 22px;font:700 16px Figtree,sans-serif;background:var(--accent);color:var(--accent-ink);text-decoration:none;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 40px}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
+.hero p{font-size:19px;color:var(--muted);max-width:30em;margin:18px 0 26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative;height:420px}
+.card{position:absolute;width:62%;aspect-ratio:5/7;border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;justify-content:space-between;color:#1b1b3a;box-shadow:0 18px 40px -18px rgba(27,27,58,.45)}
+.card b{font:800 30px/1 "Bricolage Grotesque",sans-serif}
+.card small{font-weight:500}
+.c1{background:var(--lemon);left:0;top:30px;transform:rotate(-7deg)}
+.c2{background:var(--pink);right:0;top:0;transform:rotate(6deg)}
+.c3{background:var(--mint);left:18%;bottom:0;transform:rotate(-1deg)}
+.dots{height:10px;background:radial-gradient(circle,#1b1b3a 2px,transparent 3px) 0 0/14px 10px;opacity:.5}
+section{padding:48px 0}
+section h2{font-size:clamp(30px,4.4vw,48px);font-weight:800;margin-bottom:24px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:12px 20px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:700;text-decoration:none}
+.chip:hover{border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.tile{border-radius:20px;padding:24px;min-height:210px;display:flex;flex-direction:column;justify-content:space-between;color:#1b1b3a;text-decoration:none}
+.tile h3{font-size:28px}
+.tile span{font-weight:700}
+.t1{background:var(--lilac)}.t2{background:var(--lemon)}.t3{background:var(--mint)}.t4{background:var(--pink)}
+.magic{background:var(--ink);color:var(--bg);border-radius:28px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.magic p{opacity:.8;max-width:26em}
+.magic form{display:flex;flex-direction:column;gap:12px}
+.magic input,.magic select{width:100%;padding:14px 16px;border-radius:12px;border:0;font:500 16px Figtree,sans-serif;background:var(--bg);color:var(--ink)}
+.magic .btn{background:var(--lemon);color:#1b1b3a}
+#preview{margin-top:6px;min-height:84px;border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.1);font-weight:500}
+.rsvp{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.rsvp ul{padding:0;margin:0;list-style:none;display:grid;gap:12px}
+.rsvp li{padding-left:30px;position:relative}
+.rsvp li::before{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--mint);box-shadow:inset 0 0 0 4px var(--accent)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:26px}
+.panel h3{font-size:26px;margin-bottom:4px}
+.panel .meta{color:var(--muted);margin:0 0 16px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.seg button{padding:12px;border-radius:12px;border:2px solid var(--line);background:transparent;color:var(--ink);font:700 16px Figtree,sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.panel label{display:block;font-weight:700;margin:10px 0 6px}
+.panel input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:16px Figtree,sans-serif}
+.panel .btn{width:100%;margin-top:16px}
+#done{margin-top:14px;font-weight:700;min-height:24px}
+.tally{display:flex;gap:16px;margin-top:14px;color:var(--muted);font-size:15px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{font:700 19px Figtree,sans-serif;cursor:pointer}
+details p{color:var(--muted);margin:10px 0 0;max-width:46em}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:36px 0;color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px}
+.cols a{display:block;text-decoration:none;padding:3px 0}
+.cols strong{color:var(--ink);display:block;margin-bottom:6px}
+@media (max-width:820px){.hero,.magic,.rsvp{grid-template-columns:1fr}.stage{height:360px}.magic{padding:26px}.bar .btn{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.crumb{color:var(--muted);padding:26px 0 0}.crumb a{font-weight:700;text-decoration:none}
+.page{padding-bottom:20px}.page h1{font-size:clamp(36px,5.4vw,60px);font-weight:800;margin:10px 0 12px}.page>p{color:var(--muted);max-width:40em;font-size:18px}.page h2{margin:36px 0 16px;font-size:30px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:22px;margin:30px 0}
+.tcard{text-decoration:none;display:block}.tcard span{display:block;margin-top:10px;font-weight:700}
+.tc{aspect-ratio:5/7;border-radius:14px;background:var(--c);color:#1b1b3a;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 30px -18px rgba(27,27,58,.5);transition:transform .15s}
+.tc b{font:800 26px/1.05 "Bricolage Grotesque",sans-serif}.tcard:hover .tc{transform:translateY(-4px)}
+.ed{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:40px;align-items:start;margin:26px 0}
+.pv{aspect-ratio:5/7;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;color:#1b1b3a;box-shadow:0 22px 44px -22px rgba(27,27,58,.5);overflow:hidden}
+.pv b{font:800 40px/1.02 "Bricolage Grotesque",sans-serif;overflow-wrap:anywhere}.pv p{margin:12px 0 0;font-size:18px}
+.sw{display:flex;gap:10px;margin:6px 0}.sw button{width:36px;height:36px;border-radius:50%;border:3px solid transparent;cursor:pointer}.sw button[aria-pressed="true"]{border-color:var(--ink)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.panel .row .btn{width:auto;margin:0}
+.gl{width:100%;border-collapse:collapse}.gl th,.gl td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}
+nav a[aria-current]{background:var(--ink);color:var(--bg)}section{scroll-margin-top:80px}
+@media (max-width:820px){.ed{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="logo" href="#home">Partyline</a>
+  <nav aria-label="Main"><a href="#wedding">Wedding</a><a href="#birthday">Birthday</a><a href="#baby">Baby &amp; kids</a><a href="#party">Party</a><a href="#cards">Greeting cards</a><a href="#rsvp">RSVP</a></nav>
+  <a class="btn" href="#invitations">Start free</a>
+</div></header>
+
+<main id="app" class="wrap"></main>
+<template id="v-home"><div>
+  <div class="hero">
+    <div>
+      <h1>Ready to celebrate?</h1>
+      <p>Life’s a party, and it starts with the right invite. Pick a design, add your details, and track every reply in one place.</p>
+      <div class="cta"><a class="btn" href="#invitations">Browse invitations</a><a class="btn alt" href="#magic">Try Magic invite</a></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="card c1"><small>You’re invited</small><b>Mia turns 7</b><div><div class="dots"></div><small>Sat, Dec 12 · 2 pm</small></div></div>
+      <div class="card c2"><small>Save the date</small><b>Ana &amp; Leo</b><div><div class="dots"></div><small>June 20, 2027</small></div></div>
+      <div class="card c3"><small>Thanksgiving</small><b>Friendsgiving</b><div><div class="dots"></div><small>Bring a side dish</small></div></div>
+    </div>
+  </div>
+
+  <section id="browse" aria-labelledby="h-pop">
+    <h2 id="h-pop">Popular categories</h2>
+    <div class="chips">
+      <a class="chip" href="#baby">Baby shower</a><a class="chip" href="#birthday">Birthday</a><a class="chip" href="#wedding">Wedding</a><a class="chip" href="#party">Party</a><a class="chip" href="#cards">Thank you cards</a><a class="chip" href="#cards">New baby cards</a><a class="chip" href="#design-birthday-0">Upload your own</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-trend">
+    <h2 id="h-trend">Explore what’s trending</h2>
+    <div class="grid">
+      <a class="tile t1" href="#party"><h3>Thanksgiving invites</h3><span>Browse designs</span></a>
+      <a class="tile t2" href="#cards"><h3>Holiday cards</h3><span>Browse designs</span></a>
+      <a class="tile t3" href="#birthday"><h3>Surprise birthday</h3><span>Browse designs</span></a>
+      <a class="tile t4" href="#baby"><h3>Baby shower</h3><span>Browse designs</span></a>
+    </div>
+  </section>
+
+  <section id="magic" aria-labelledby="h-magic">
+    <div class="magic">
+      <div>
+        <h2 id="h-magic">Magic invite</h2>
+        <p>Describe your event and style, and the wording writes itself. Edit anything before you send.</p>
+      </div>
+      <form id="mf">
+        <input id="ev" aria-label="Event" placeholder="Event, e.g. Mia’s 7th birthday" value="Mia’s 7th birthday">
+        <select id="tone" aria-label="Style"><option>Playful</option><option>Elegant</option><option>Simple</option></select>
+        <button class="btn" type="submit">Write my invite</button>
+        <div id="preview" aria-live="polite">Your invitation text will appear here.</div>
+      </form>
+    </div>
+  </section>
+
+  <section id="rsvp-demo" aria-labelledby="h-rsvp">
+    <div class="rsvp">
+      <div>
+        <h2 id="h-rsvp">Turn any invitation into an online RSVP</h2>
+        <ul>
+          <li>Add maps, gift registries, and notes to your RSVP page</li>
+          <li>Set deadlines, guest limits, and reminders</li>
+          <li>Share with a link or QR code; guests reply in one click</li>
+          <li>Track responses in real time and get email notifications</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Mia’s 7th birthday</h3>
+        <p class="meta">Sat, Dec 12 · 2 pm · Maple Park Pavilion</p>
+        <div class="seg" role="group" aria-label="Your reply">
+          <button type="button" aria-pressed="true" data-v="Yes">Yes</button>
+          <button type="button" aria-pressed="false" data-v="Maybe">Maybe</button>
+          <button type="button" aria-pressed="false" data-v="No">No</button>
+        </div>
+        <label for="nm">Your name</label><input id="nm" autocomplete="name">
+        <label for="gc">Guests (including you)</label><input id="gc" type="number" min="1" max="6" value="1">
+        <button class="btn" id="send" type="button">Send reply</button>
+        <div id="done" aria-live="polite"></div>
+        <div class="tally"><span id="ty">Yes: 12</span><span id="tm">Maybe: 3</span><span id="tn">No: 2</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-share">
+    <h2 id="h-share">Design it once, share it everywhere</h2>
+    <div class="grid">
+      <div class="tile t1"><h3>Download</h3><span>Save a copy to your device.</span></div>
+      <div class="tile t2"><h3>Print</h3><span>Order prints or print at home.</span></div>
+      <div class="tile t3"><h3>Share</h3><span>Text, email, or social media.</span></div>
+      <div class="tile t4"><h3>Manage</h3><span>One event page for all replies.</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-faq">
+    <h2 id="h-faq">Frequently asked questions</h2>
+    <details><summary>What can I create?</summary><p>Invitations and greeting cards for birthdays, weddings, holidays, baby showers, anniversaries, and more. Add your own text and photos, then share digitally or print.</p></details>
+    <details><summary>Is it free?</summary><p>Most features are free with no sign-up. Premium adds exclusive designs and advanced editing.</p></details>
+    <details><summary>How do guests RSVP?</summary><p>They open your link, tap Yes, Maybe, or No, and add their name. No app or account needed.</p></details>
+    <details><summary>What sizes are supported?</summary><p>Portrait 5×7 in, landscape 7×5 in, and square 5×5 in.</p></details>
+  </section>
+</div></template>
+
+<footer><div class="wrap"><div class="cols"><div><strong>Create</strong><a href="#invitations">Invitations</a><a href="#cards">Cards</a><a href="#rsvp">RSVP</a></div><div><strong>Occasions</strong><a href="#wedding">Wedding</a><a href="#birthday">Birthday</a><a href="#baby">Baby shower</a><a href="#party">Party</a></div><div><strong>Company</strong><a href="#about">About us</a><a href="#blog">Blog</a><a href="#contact">Contact</a></div></div><p>© 2026 Partyline. A look-alike demo, not affiliated with any other invitation site.</p></div></footer>
+
+<script>
+(function(){
+var COL=['#ffe66d','#ffb3c8','#bfebd7','#cdb9ff','#ffd2a8','#b7dcff'];
+var CATS={
+wedding:{t:'Wedding invitations',d:'Invites, save-the-dates, and shower cards for every part of the wedding.',n:'Wedding',i:[['Elegant','Ana & Leo','Together with their families'],['Rustic','Mae & Jon','Barn, boots, and a big yes'],['Floral','Ivy & Sam','Garden vows at noon'],['Modern','Kai & Noor','Join us for the next chapter'],['Simple','Eli & Rae','We’re getting married'],['Beach','Tess & Rio','Toes in the sand, rings on hands'],['Save the date','Save the date','Ana & Leo are tying the knot'],['Bridal shower','Bridal shower','Brunch for the bride-to-be']]},
+birthday:{t:'Birthday invitations',d:'From first birthdays to milestone bashes. Pick a look and make it yours.',n:'Birthday',i:[['Kids','Mia turns 7','Cake, games, and confetti'],['1st birthday','One year of Theo','Come celebrate the big one'],['Sweet 16','Sweet 16','Lila’s night to shine'],['21st','Cheers to 21','Drinks and dancing for Max'],['30th','Thirty and thriving','Sam’s decade party'],['50th','Fifty and fabulous','Rosa’s golden evening'],['Surprise','Shh, it’s a surprise','Don’t tell Dad'],['Pool party','Splash into 9','Pool day for Jonah']]},
+baby:{t:'Baby & kids',d:'Showers, reveals, baptisms, and announcements for the little ones.',n:'Baby & kids',i:[['Baby shower','Baby on the way','A shower for Priya'],['Gender reveal','Boy or girl?','Pop the balloon and see'],['Baby sprinkle','A little sprinkle','A small gathering for baby two'],['Baptism','A blessed day','Noah’s baptism'],['1st birthday','Wild one','Ellie turns one'],['Birth announcement','Welcome, Ada','Born May 3, 7 lb 2 oz'],['Sip & see','Sip & see','Come meet baby Jude'],['Communion','First communion','Sofia’s special day']]},
+party:{t:'Party invitations',d:'Housewarmings, dinners, graduations, and every get-together in between.',n:'Party',i:[['Housewarming','New place, new party','Come see our home'],['Graduation','Class of 2027','Jess is a grad'],['Dinner party','Dinner at eight','Long table, good company'],['Anniversary','25 years strong','Mark & Dee’s anniversary'],['Retirement','Happy retirement','Cheers to Bob’s 30 years'],['BBQ','Backyard BBQ','The grill’s hot, bring a friend'],['Brunch','Bubbles & brunch','Sunday at eleven'],['Holiday party','Holiday cheer','Sweaters encouraged']]},
+cards:{t:'Greeting cards',d:'Say it with a card for birthdays, thank-yous, holidays, and more.',n:'Greeting cards',i:[['Birthday','Happy birthday','Wishing you a great one'],['Thank you','Thank you','You made my day'],['Get well','Get well soon','Thinking of you'],['Anniversary','Happy anniversary','Here’s to many more'],['Holidays','Season’s greetings','Warm wishes to you'],['New baby','Welcome, little one','Congratulations to you both'],['Congratulations','Congratulations','You did it'],['Good luck','Good luck','You’ve got this']]}
+};
+var POSTS=[['Best Christmas games for adults','Pick games that work for mixed groups: a gift swap with a steal rule, holiday trivia, and a movie-quote round. Keep each game under 15 minutes so the party stays moving.'],['25 Thanksgiving wishes','Keep it short and specific. Name one thing you’re grateful for about the person, and add a line about the table you hope to share.'],['How to word an RSVP request','Put the reply-by date first, tell guests how to answer, and say how many seats you saved. Short and warm beats formal.']];
+var G=[['Sam','Yes',2],['Priya','Yes',1],['Jo','Maybe',1],['Dan','No',1]];
+var magicMsg='',app=document.getElementById('app'),home=document.getElementById('v-home');
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function crumb(a){return '<div class="crumb"><a href="#home">Home</a>'+(a?' / '+a:'')+'</div>'}
+function el(h){var d=document.createElement('div');d.className='page';d.innerHTML=h;return d}
+function bindMagic(){
+  var f=document.getElementById('mf');if(!f)return;var p=document.getElementById('preview');
+  f.addEventListener('submit',function(e){e.preventDefault();
+    var ev=document.getElementById('ev').value.trim()||'our celebration',t=document.getElementById('tone').value;
+    var m={Playful:'Cake, games, and way too much confetti! Join us for '+ev+'. Please RSVP so we save you a seat.',Elegant:'You are warmly invited to celebrate '+ev+'. Your presence would mean a great deal. Kindly reply by the date below.',Simple:'Join us for '+ev+'. Details below. Please let us know if you can make it.'};
+    magicMsg=m[t];p.textContent=magicMsg+' ';
+    var a=document.createElement('a');a.href='#design-birthday-0';a.textContent='Use this in a design';a.style.fontWeight='700';p.appendChild(a);
+  });
+}
+function tally(){var c={Yes:0,Maybe:0,No:0};G.forEach(function(g){c[g[1]]+=g[2]});
+  var m={ty:'Yes',tm:'Maybe',tn:'No'};for(var k in m){var e=document.getElementById(k);if(e)e.textContent=m[k]+': '+c[m[k]]}
+  var b=document.getElementById('glb');if(b)b.innerHTML=G.map(function(g){return '<tr><td>'+esc(g[0])+'</td><td>'+g[1]+'</td><td>'+g[2]+'</td></tr>'}).join('')}
+function bindRsvp(){
+  var sel='Yes',b=document.querySelectorAll('.seg button'),s=document.getElementById('send');tally();if(!s)return;
+  b.forEach(function(x){x.addEventListener('click',function(){sel=x.dataset.v;b.forEach(function(y){y.setAttribute('aria-pressed',y===x)})})});
+  s.addEventListener('click',function(){
+    var n=document.getElementById('nm').value.trim(),d=document.getElementById('done');
+    if(!n){d.textContent='Enter your name to send your reply.';return}
+    var g=Math.max(1,Math.min(6,parseInt(document.getElementById('gc').value,10)||1));
+    G.push([n,sel,g]);tally();d.textContent='Reply sent: '+sel+' for '+g+'. Thanks, '+n+'!';
+  });
+}
+function catView(k){var c=CATS[k];
+  app.appendChild(el(crumb(c.n)+'<h1>'+c.t+'</h1><p>'+c.d+'</p><div class="tgrid">'+c.i.map(function(it,i){return '<a class="tcard" href="#design-'+k+'-'+i+'" style="--c:'+COL[i%6]+'"><div class="tc"><small>'+esc(it[0])+'</small><b>'+esc(it[1])+'</b><div class="dots"></div></div><span>Customize '+esc(it[0])+'</span></a>'}).join('')+'</div><p>Don’t see it? <a href="#magic"><b>Try Magic invite</b></a> to write one from scratch.</p>'));
+}
+function invView(){
+  app.appendChild(el(crumb('Invitations')+'<h1>All invitations</h1><p>Choose an occasion to see designs.</p><div class="grid" style="margin-top:28px">'+['wedding','birthday','baby','party','cards'].map(function(k,i){return '<a class="tile" style="background:'+COL[i]+'" href="#'+k+'"><h3>'+CATS[k].t+'</h3><span>'+CATS[k].i.length+' designs</span></a>'}).join('')+'</div>'));
+}
+function designView(k,i){var c=CATS[k],it=c.i[i],isC=k==='cards',st={h:it[1],m:magicMsg||it[2],d:'Sat, Dec 12 · 2 pm',p:'Maple Park Pavilion',c:COL[i%6]};
+  var sw=COL.map(function(x,j){return '<button type="button" aria-label="Color '+(j+1)+'" aria-pressed="'+(x===st.c)+'" data-c="'+x+'" style="background:'+x+'"></button>'}).join('');
+  app.appendChild(el(crumb('<a href="#'+k+'">'+c.n+'</a> / '+esc(it[0]))+'<div class="ed"><div class="pv" id="pv"><small id="p0">'+esc(it[0])+'</small><div><b id="p1"></b><p id="p2"></p></div><small id="p3"></small></div><div class="panel"><h3>Customize</h3><p class="meta">Edits show on the card as you type.</p><label for="e1">Headline</label><input id="e1" value="'+esc(st.h)+'"><label for="e2">Message</label><input id="e2" value="'+esc(st.m)+'">'+(isC?'':'<label for="e3">Date and time</label><input id="e3" value="'+st.d+'"><label for="e4">Place</label><input id="e4" value="'+st.p+'">')+'<label>Color</label><div class="sw">'+sw+'</div><div class="row"><button class="btn" id="cp" type="button">Copy link</button>'+(isC?'':'<a class="btn alt" href="#rsvp">Collect RSVPs</a>')+'<a class="btn alt" href="#'+k+'">Back to designs</a></div><div id="done" aria-live="polite"></div></div></div>'));
+  function up(){var pv=document.getElementById('pv');pv.style.background=st.c;document.getElementById('p1').textContent=st.h;document.getElementById('p2').textContent=st.m;document.getElementById('p3').textContent=isC?'':st.d+' · '+st.p}
+  [['e1','h'],['e2','m'],['e3','d'],['e4','p']].forEach(function(x){var e=document.getElementById(x[0]);if(e)e.addEventListener('input',function(){st[x[1]]=e.value;up()})});
+  document.querySelectorAll('.sw button').forEach(function(b){b.addEventListener('click',function(){st.c=b.dataset.c;document.querySelectorAll('.sw button').forEach(function(y){y.setAttribute('aria-pressed',y===b)});up()})});
+  document.getElementById('cp').addEventListener('click',function(){var d=document.getElementById('done');
+    try{navigator.clipboard.writeText(location.href).then(function(){d.textContent='Link copied.'},function(){d.textContent='Copy the link from your address bar.'})}catch(e){d.textContent='Copy the link from your address bar.'}});
+  up();
+}
+function rsvpView(){
+  app.appendChild(el(crumb('RSVP')+'<h1>Online RSVP</h1><p>Guests reply in one tap. You see every answer as it comes in.</p>'));
+  var w=document.createElement('div');w.appendChild(home.content.querySelector('#rsvp-demo').cloneNode(true));app.appendChild(w);
+  app.appendChild(el('<h2>Guest list</h2><div class="panel" style="overflow-x:auto"><table class="gl"><thead><tr><th>Name</th><th>Reply</th><th>Guests</th></tr></thead><tbody id="glb"></tbody></table></div><div class="grid" style="margin-top:28px"><div class="tile t1"><h3>Deadlines</h3><span>Close replies on a date you choose.</span></div><div class="tile t2"><h3>Guest limits</h3><span>Cap how many each invite can bring.</span></div><div class="tile t3"><h3>Reminders</h3><span>Nudge guests who haven’t replied.</span></div></div>'));
+  bindRsvp();
+}
+function aboutView(){app.appendChild(el(crumb('About us')+'<h1>About Partyline</h1><p>We make it easy to invite people, hear back, and get on with the party. Every design is free to customize, and every invitation can collect RSVPs.</p><div class="grid" style="margin-top:28px"><div class="tile t1"><h3>Free to start</h3><span>No sign-up to design.</span></div><div class="tile t2"><h3>Any occasion</h3><span>Five categories, dozens of designs.</span></div><div class="tile t3"><h3>One link</h3><span>Share it anywhere.</span></div></div>'))}
+function blogView(){app.appendChild(el(crumb('Blog')+'<h1>Party ideas</h1><p>Tips for hosting, wording, and celebrating.</p>'+POSTS.map(function(p){return '<details><summary>'+p[0]+'</summary><p>'+p[1]+'</p></details>'}).join('')))}
+function contactView(){
+  app.appendChild(el(crumb('Contact')+'<h1>Contact us</h1><p>Questions about an invitation or RSVP? Write to us.</p><div class="panel" style="max-width:520px;margin-top:24px"><label for="cn">Name</label><input id="cn"><label for="ce">Email</label><input id="ce" type="email"><label for="cm">Message</label><input id="cm"><button class="btn" id="cs" type="button">Send message</button><div id="done" aria-live="polite"></div></div>'));
+  document.getElementById('cs').addEventListener('click',function(){var n=document.getElementById('cn').value.trim(),e=document.getElementById('ce').value.trim(),d=document.getElementById('done');
+    d.textContent=(!n||!e||!document.getElementById('cm').value.trim())?'Fill in your name, email, and message.':'Thanks, '+n+'. This demo doesn’t send email, so nothing left your browser.'});
+}
+function route(){
+  var h=location.hash.slice(1)||'home',m=/^design-([a-z]+)-(\d+)$/.exec(h),anchor=null,t='Partyline';
+  app.replaceChildren();
+  if(CATS[h]){catView(h);t=CATS[h].t}
+  else if(m&&CATS[m[1]]&&CATS[m[1]].i[+m[2]]){designView(m[1],+m[2]);t='Customize '+CATS[m[1]].i[+m[2]][0]}
+  else if(h==='invitations')invView();
+  else if(h==='rsvp')rsvpView();
+  else if(h==='about')aboutView();
+  else if(h==='blog')blogView();
+  else if(h==='contact')contactView();
+  else{app.appendChild(home.content.cloneNode(true));bindMagic();bindRsvp();if(h==='magic'||h==='browse')anchor=h}
+  document.title=t==='Partyline'?'Partyline: Free online invitations & greeting cards':t+' | Partyline';
+  document.querySelectorAll('nav a').forEach(function(a){a.removeAttribute('aria-current');if(a.getAttribute('href')==='#'+h)a.setAttribute('aria-current','page')});
+  var a=anchor&&document.getElementById(anchor);if(a)a.scrollIntoView();else window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);route();
+})();
+</script>
+
+</body>
+</html>

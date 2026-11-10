@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFF6EE">
+<meta name="description" content="Celebrio is a stationery desk for invitations and greeting cards. Design free. Pay only to download or send.">
+<title>Celebrio — Cards worth opening</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FFF6EE'/%3E%3Ccircle cx='16' cy='16' r='10' fill='%23FF4D3A'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-size='14' font-family='Georgia' fill='%232A1420'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,700;1,9..144,560;1,9..144,700&family=Nunito:wght@400;600;700;800&family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFF6EE;--ink:#2A1420;--coral:#FF4D3A;--marigold:#FFC53D;--blush:#F6D7CC;
+  --bg:var(--paper);--surface:#fffdfb;--muted:#5c3d46;--line:#ead9cf;
+  --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--sat) + 76px)}
+body{margin:0;background:
+  radial-gradient(ellipse at 0% -10%,#f6d7cc 0%,transparent 46%),
+  radial-gradient(ellipse at 100% 0%,#ffe7bf 0%,transparent 42%),
+  var(--paper);
+  color:var(--ink);font:400 16px/1.55 Nunito,Figtree,"Segoe UI",sans-serif;
+  padding-bottom:var(--sab);overflow-x:clip}
+body::before{content:"";position:fixed;left:0;right:0;top:0;height:var(--sat);background:var(--paper);z-index:40}
+h1,h2,h3,.logo,.sheet h2,.float b,.wax,.price b.amt{font-family:Fraunces,"Bricolage Grotesque",Georgia,serif;font-weight:560;letter-spacing:-.02em;line-height:1.05;margin:0}
+a{color:inherit}
+img,svg{max-width:100%;height:auto}
+[hidden]{display:none !important}
+.skip{position:absolute;left:12px;top:-48px;background:var(--ink);color:var(--paper);padding:8px 12px;border-radius:8px;z-index:50}
+.skip:focus{top:calc(var(--sat) + 8px)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;min-width:0}
+header{position:sticky;top:0;z-index:20;background:rgba(255,246,238,.94);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line);padding-top:var(--sat)}
+.bar{display:flex;align-items:center;gap:14px;min-height:64px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-style:italic;font-size:28px;flex:0 0 auto}
+.seal{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff7a68,var(--coral) 55%,#d63a2c);color:var(--ink);display:grid;place-items:center;font-style:normal;font-size:15px;font-weight:700;box-shadow:inset 0 0 0 1px rgba(42,20,32,.2)}
+nav{display:flex;gap:4px;overflow-x:auto;flex:1 1 auto;min-width:0;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:700;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center;flex:0 0 auto}
+nav a:hover{background:#f3e4da}
+nav a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:0;border-radius:999px;padding:10px 18px;background:var(--coral);color:var(--ink);font:800 16px/1 Nunito,sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{background:#ff6a58}
+.btn.alt{background:transparent;box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.alt:hover{background:var(--blush)}
+.btn.tiny{background:transparent;box-shadow:none;text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px;padding-inline:8px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding:48px 0 28px}
+.eyebrow{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--muted);margin:0 0 10px}
+.hero h1{font-size:clamp(46px,7vw,84px)}
+.lede{font-size:19px;color:var(--muted);max-width:38em;margin:16px 0 22px}
+.cta,.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.quiet{color:var(--muted);font-size:14px;margin:14px 0 0}
+.stage{position:relative;height:500px;overflow:hidden}
+.hero-env{position:absolute;width:78%;height:210px;left:11%;bottom:24px;background:#f6d7cc;border-radius:16px;box-shadow:0 18px 40px -28px rgba(42,20,32,.7)}
+.hero-env::before{content:"";position:absolute;inset:0 0 46% 0;background:#efc8ba;clip-path:polygon(0 0,100% 0,50% 100%)}
+.hero-env::after{content:"";position:absolute;left:50%;top:46%;width:42px;height:42px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff7a68,var(--coral));box-shadow:inset 0 0 0 2px rgba(42,20,32,.2)}
+.float{position:absolute;width:42%;aspect-ratio:5/7;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);box-shadow:0 18px 36px -20px rgba(42,20,32,.5)}
+.float b{font-size:26px;font-weight:560;line-height:1.02}
+.float small{font-weight:700}
+.f1{background:#ffe66d;left:8px;top:18px;z-index:1;transform:rotate(-8deg)}
+.f2{background:#ffb3c8;right:8px;top:8px;width:40%;z-index:1;transform:rotate(7deg)}
+.f3{background:#bfebd7;left:27%;bottom:8px;width:46%;z-index:2;transform:rotate(-1deg)}
+.dots{height:10px;background:radial-gradient(circle,currentColor 1.5px,transparent 2.1px) 0 0/14px 10px;opacity:.45}
+section{padding:42px 0}
+section h2{font-size:clamp(30px,4.4vw,48px);margin-bottom:8px}
+.sub{color:var(--muted);margin:0 0 20px;max-width:40em}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:10px 16px;min-height:44px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:800;text-decoration:none;display:inline-flex;align-items:center}
+.chip:hover{border-color:var(--coral)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:16px}
+.promo{border-radius:22px;padding:22px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--ink)}
+.promo h3{font-size:28px}
+.promo span{font-weight:800}
+.p1{background:var(--blush)}.p2{background:var(--marigold)}.p3{background:var(--surface);border:1px solid var(--line)}.p4{background:#ffe1d4}
+.magic{background:var(--ink);color:var(--paper);border-radius:28px;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.magic p{color:#f6d7cc;max-width:36em}
+.magic form{display:flex;flex-direction:column;gap:12px}
+.magic input,.magic select{width:100%;min-height:48px;padding:12px 14px;border-radius:12px;border:0;font:600 16px Nunito,sans-serif;background:var(--paper);color:var(--ink)}
+.magic .btn{background:var(--marigold);color:var(--ink)}
+.magic .btn:hover{background:#ffd15f}
+#preview{min-height:88px;border-radius:14px;padding:14px 16px;background:rgba(255,246,238,.1);font-weight:650}
+#preview a{color:var(--marigold);font-weight:800}
+.rsvp{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.rsvp ul{padding:0;margin:12px 0 0;list-style:none;display:grid;gap:12px}
+.rsvp li{padding-left:28px;position:relative}
+.rsvp li::before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:50%;background:var(--marigold);box-shadow:inset 0 0 0 4px var(--ink)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;min-width:0}
+.panel h3{font-size:28px;margin-bottom:4px}
+.meta{color:var(--muted);margin:0 0 12px}
+.meta a,.prose a,.page>p a,.sub a{text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px;font-weight:800}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.seg button{min-height:44px;border-radius:12px;border:2px solid var(--line);background:transparent;color:var(--ink);font:800 16px Nunito,sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+label{display:block;font-weight:800;margin:10px 0 6px}
+input,select,textarea{width:100%;min-height:44px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:600 16px Nunito,sans-serif}
+textarea{min-height:120px;resize:vertical}
+.panel .btn{margin-top:14px}
+.tally{display:flex;flex-wrap:wrap;gap:12px 16px;margin-top:12px;color:var(--muted);font-weight:800}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-weight:800;font-size:13px;background:var(--blush)}
+.pill.Yes{background:#bfebd7}.pill.Maybe{background:var(--marigold)}.pill.No{background:var(--blush)}
+details{border-bottom:1px solid var(--line);padding:14px 0}
+summary{font:800 18px Nunito,sans-serif;cursor:pointer;min-height:44px;display:flex;align-items:center}
+details p{color:var(--muted);margin:8px 0 0;max-width:46em}
+footer{border-top:1px solid var(--line);margin-top:20px;padding:28px 0 calc(28px + var(--sab));color:var(--muted)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;padding:0;margin:0 0 22px;font-weight:800;color:var(--ink)}
+.trust li{display:flex;align-items:center;gap:8px}
+.trust li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:22px}
+.cols a{display:block;text-decoration:none;padding:4px 0;min-height:32px}
+.cols strong{color:var(--ink);display:block;margin-bottom:6px}
+.fine{font-size:14px;max-width:62em}
+.crumb{color:var(--muted);padding:22px 0 0;margin:0}
+.crumb a{font-weight:800;text-decoration:none}
+.page{padding-bottom:28px;min-width:0}
+.page h1{font-size:clamp(36px,5.5vw,64px);margin:8px 0 10px}
+.page>p,.prose{color:var(--muted);max-width:42em;font-size:18px}
+.prose p{margin:0 0 12px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:18px;margin:26px 0}
+.tcard{text-decoration:none;color:inherit;display:block}
+.tcard span{display:block;margin-top:8px;font-weight:800}
+.ed{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:28px;align-items:start;margin:22px 0}
+.sheet{aspect-ratio:5/7;border-radius:18px;padding:16px;display:flex;box-shadow:0 22px 44px -24px rgba(42,20,32,.55);overflow:hidden;width:100%;max-width:440px}
+.sheet-body{display:flex;flex-direction:column;justify-content:space-between;width:100%;min-height:0;overflow:hidden}
+.sheet.mat{background-clip:padding-box}
+.sheet.mat .sheet-body{background:var(--paper);color:var(--ink);border-radius:12px;padding:16px 14px}
+.sheet h2{font-size:clamp(28px,4vw,44px);overflow-wrap:anywhere}
+.sheet h2:focus,.sheet h2:focus-visible{outline:none}
+.sheet .msg{margin:10px 0 0;font-size:17px;overflow-wrap:anywhere}
+.kicker{font-family:Nunito,sans-serif;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin:0}
+.mark{font-family:Fraunces,Georgia,serif;font-style:italic;margin:8px 0 0;opacity:.8}
+.sheet.mini{max-width:none;padding:12px;box-shadow:0 14px 28px -18px rgba(42,20,32,.5);transition:transform .15s}
+.sheet.mini h2{font-size:22px}
+.sheet.mini .sheet-body{padding:8px}
+.tcard:hover .sheet{transform:translateY(-4px)}
+.sw{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 2px}
+.sw button{width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(42,20,32,.18)}
+.sw button[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:2px}
+.tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--marigold);border-radius:999px;padding:3px 6px}
+.gate{margin-top:14px;background:var(--blush);border-radius:18px;padding:16px}
+.sharebox{margin-top:14px;border:1px solid var(--line);border-radius:18px;padding:16px;background:var(--surface)}
+.url{display:block;overflow-wrap:anywhere;background:var(--paper);border-radius:12px;padding:10px 12px;font-size:14px;margin:8px 0}
+.qr{width:min(100%,200px);background:var(--paper);padding:8px;border-radius:12px}
+.qr svg{width:100%;height:auto;display:block}
+.gl-wrap{overflow-x:auto}
+.gl{width:100%;border-collapse:collapse}
+.gl th,.gl td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px}
+.price.paid{background:var(--blush);border-color:transparent}
+.price .amt{font-size:42px;display:block;margin:8px 0}
+.price ul{margin:8px 0 0;padding-left:18px}
+.price li{margin:6px 0}
+.callout{background:var(--blush);border-radius:16px;padding:12px 14px;margin:12px 0}
+.mail{background:radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.75),transparent 62%),linear-gradient(#fffaf6,#f4e3d8);border:1px solid var(--line);border-radius:28px;padding:28px 16px 20px;margin-top:12px}
+.env{width:min(100%,380px);height:240px;margin:8px auto 0;position:relative;perspective:1000px;filter:drop-shadow(0 18px 22px rgba(42,20,32,.16))}
+.env-back,.env-liner,.env-pocket,.env-flap{position:absolute}
+.env-back{inset:0;border-radius:18px;background:#f4d4c8;z-index:0}
+.env-liner{inset:12px;border-radius:12px;z-index:1;opacity:0;background:repeating-linear-gradient(135deg,#ffc53d 0 7px,#ffe7b0 7px 14px);transition:opacity .4s ease .2s}
+.mail.is-open .env-liner{opacity:1}
+.env-pocket{left:0;right:0;bottom:0;height:68%;z-index:3;border-radius:0 0 18px 18px;background:linear-gradient(#fffaf6,#f6d7cc 42%,#efc2b2);clip-path:polygon(0 28%,50% 0,100% 28%,100% 100%,0 100%)}
+.env-flap{left:0;right:0;top:0;height:58%;z-index:4;background:#efc8ba;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .65s cubic-bezier(.55,.04,.28,1);backface-visibility:hidden}
+.mail.is-open .env-flap{transform:rotateX(180deg);z-index:1}
+.wax{position:absolute;left:50%;top:42%;width:72px;height:72px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff8d7c,var(--coral) 46%,#c63428);z-index:6;display:grid;place-items:center;font-family:Fraunces,Georgia,serif;font-size:32px;color:var(--ink);box-shadow:0 10px 16px -10px rgba(42,20,32,.75),inset 0 0 0 2px rgba(42,20,32,.22);transition:opacity .3s ease,transform .55s ease}
+.mail.is-open .wax{opacity:0;transform:translate(-50%,-140%) scale(.6)}
+.letter-reveal{max-height:0;opacity:0;overflow:hidden;transform:translateY(-36px);transition:max-height .7s ease .22s,opacity .4s ease .28s,transform .7s cubic-bezier(.2,.7,.2,1) .22s}
+.mail.is-open .letter-reveal{max-height:780px;opacity:1;transform:none;margin-top:8px}
+.letter-reveal .sheet{margin:0 auto}
+.mail-actions{display:flex;justify-content:center;margin-top:16px}
+.joiner{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.joiner input{flex:1 1 160px;width:auto}
+.note-list{display:grid;gap:10px;margin-top:16px}
+.note-list a{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);text-decoration:none;font-weight:800}
+@media (max-width:860px){
+  .hero,.magic,.rsvp,.ed,.prices{grid-template-columns:1fr}
+  .bar{flex-wrap:wrap;row-gap:2px;padding-bottom:4px}
+  .logo{margin-right:auto}
+  nav{order:3;flex:1 0 100%;padding-bottom:6px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}
+  .stage{height:380px}
+  .float{width:46%}
+  .float b{font-size:22px}
+  .f3{width:50%;left:22%}
+  .magic{padding:22px}
+  .logo{font-size:24px}
+  .btn-start{padding-inline:14px}
+}
+@media (max-width:380px){
+  .wrap{padding:0 14px}
+  .stage{height:280px}
+  .hero h1{font-size:42px}
+}
+@media (min-width:861px){
+  .ed .sheet{position:sticky;top:calc(var(--sat) + 84px)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .letter-reveal,.env-flap,.wax,.sheet{transition:none}
+}
+@media print{
+  body.has-card header,body.has-card footer,body.has-card .no-print,body.has-card .panel,body.has-card .crumb,body.has-card .lede,body.has-card .eyebrow,body.has-card h1,body.has-card .callout,body.has-card .env,body.has-card .mail-actions{display:none !important}
+  body.has-card{background:#fff}
+  body.has-card .letter-reveal{max-height:none !important;opacity:1 !important;transform:none !important;overflow:visible !important;margin:0}
+  body.has-card .sheet{box-shadow:none;width:5in;height:7in;max-width:none;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body.has-card .mail{background:none;border:0;padding:0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#app">Skip to content</a>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home"><span class="seal" aria-hidden="true">C</span>Celebrio</a>
+    <nav aria-label="Main">
+      <a href="#wedding">Wedding</a>
+      <a href="#birthday">Birthday</a>
+      <a href="#baby">Baby &amp; kids</a>
+      <a href="#party">Party</a>
+      <a href="#cards">Cards</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <a class="btn btn-start" href="#invitations">Start free</a>
+  </div>
+</header>
+<main id="app" class="wrap"></main>
+<template id="v-home"><div>
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Invitations &amp; greeting cards</p>
+      <h1>Cards worth opening.</h1>
+      <p class="lede">Celebrio is a stationery desk for the note you actually send. Design any card free. Download, print, and a sealed envelope for guests are the paid part — and this demo says so before you get there.</p>
+      <div class="cta">
+        <a class="btn" href="#invitations">Browse invitations</a>
+        <a class="btn alt" href="#magic">Try Magic invite</a>
+        <a class="btn alt" href="#c/DEMO">Open a sample envelope</a>
+      </div>
+      <p class="quiet">Free to design · Pay to download or send · No account</p>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="hero-env"></div>
+      <article class="float f1"><small>You’re invited</small><b>Mia turns 7</b><div><div class="dots"></div><small>Dec 12 · 2 pm</small></div></article>
+      <article class="float f2"><small>Save the date</small><b>Ana &amp; Leo</b><div><div class="dots"></div><small>June 2027</small></div></article>
+      <article class="float f3"><small>With thanks</small><b>A good day</b><div><div class="dots"></div><small>A short note</small></div></article>
+    </div>
+  </div>
+
+  <section id="browse" aria-labelledby="h-pop">
+    <h2 id="h-pop">Popular right now</h2>
+    <p class="sub">A short shelf. Open a category, or start from a blank card and write your own.</p>
+    <div class="chips">
+      <a class="chip" href="#baby">Baby shower</a>
+      <a class="chip" href="#birthday">Birthday</a>
+      <a class="chip" href="#wedding">Wedding</a>
+      <a class="chip" href="#party">Party</a>
+      <a class="chip" href="#cards">Thank-you cards</a>
+      <a class="chip" href="#cards">New baby cards</a>
+      <a class="chip" href="#design-cards-10">Start from a blank card</a>
+      <a class="chip" href="#c/DEMO">Sample envelope</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-trend">
+    <h2 id="h-trend">On the desk this season</h2>
+    <p class="sub">November calls for a long table, a holiday note, and at least one surprise.</p>
+    <div class="grid">
+      <a class="promo p1" href="#party"><h3>Thanksgiving invites</h3><span>Browse designs</span></a>
+      <a class="promo p2" href="#cards"><h3>Holiday cards</h3><span>Browse designs</span></a>
+      <a class="promo p3" href="#birthday"><h3>Surprise birthday</h3><span>Browse designs</span></a>
+      <a class="promo p4" href="#baby"><h3>Baby shower</h3><span>Browse designs</span></a>
+    </div>
+  </section>
+
+  <section id="magic" aria-labelledby="h-magic">
+    <div class="magic">
+      <div>
+        <h2 id="h-magic">Magic invite</h2>
+        <p>Name the occasion and a tone. Celebrio drafts the wording. Edit every line before it reaches a card.</p>
+      </div>
+      <form id="mf">
+        <input id="ev" aria-label="Event" placeholder="Event, for example Mia’s 7th birthday" value="Mia’s 7th birthday" maxlength="80">
+        <select id="tone" aria-label="Tone"><option>Playful</option><option>Elegant</option><option>Simple</option></select>
+        <button class="btn" type="submit">Write my invite</button>
+        <div id="preview" aria-live="polite">Your invitation text will appear here.</div>
+      </form>
+    </div>
+  </section>
+
+  <section id="rsvp-demo" aria-labelledby="h-rsvp">
+    <div class="rsvp">
+      <div>
+        <h2 id="h-rsvp">The reply lives with the card</h2>
+        <p class="sub">Guests open an envelope, read the card, and answer. You see the headcount on this device.</p>
+        <ul>
+          <li>Yes, maybe, or no — no account for guests</li>
+          <li>A name and a headcount are enough</li>
+          <li>Share a link or a QR code after the pass</li>
+          <li>This demo keeps replies in the browser, not on a server</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Mia’s 7th birthday</h3>
+        <p class="meta">Sat, Dec 12 · 2 pm · Maple Park Pavilion</p>
+        <div class="seg" role="group" aria-label="Your reply">
+          <button type="button" aria-pressed="true" data-v="Yes">Yes</button>
+          <button type="button" aria-pressed="false" data-v="Maybe">Maybe</button>
+          <button type="button" aria-pressed="false" data-v="No">No</button>
+        </div>
+        <label for="nm">Your name</label>
+        <input id="nm" data-name autocomplete="name" maxlength="60">
+        <label for="gc">Guests, including you</label>
+        <input id="gc" data-count type="number" min="1" max="6" value="1">
+        <button class="btn" data-send type="button">Send reply</button>
+        <div data-done aria-live="polite"></div>
+        <div class="tally" aria-live="polite"><span data-tally="Yes">Yes: 3</span><span data-tally="Maybe">Maybe: 1</span><span data-tally="No">No: 1</span></div>
+        <p class="meta">Headcount, including extra guests. <a href="#c/DEMO">Open Mia’s envelope</a> or see the <a href="#rsvp">full list</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-share">
+    <h2 id="h-share">What you can do with a finished card</h2>
+    <div class="grid">
+      <div class="promo p3"><h3>Preview</h3><span>Open the envelope on this device, free.</span></div>
+      <div class="promo p2"><h3>Print</h3><span>A 5×7 card, after the pass.</span></div>
+      <div class="promo p1"><h3>Share</h3><span>A link and a QR code, after the pass.</span></div>
+      <div class="promo p4"><h3>Replies</h3><span>Yes, maybe, and no in one list.</span></div>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="h-faq">
+    <h2 id="h-faq">Questions, answered plainly</h2>
+    <details open><summary>What can I make?</summary><p>Invitations and greeting cards for weddings, birthdays, baby showers, parties, and ordinary thanks. You edit the words, the date, the place, and the color. Photos are not part of this demo.</p></details>
+    <details><summary>What is free, and what is paid?</summary><p>Browsing, Magic invite, and customizing are free. There is no account. Download, print, and sending a guest link are paid: $12 once per card when payments are live. In this demo, “Unlock demo on this device” turns those tools on locally and does not charge a card, start a trial, or renew.</p></details>
+    <details><summary>How does the envelope work?</summary><p>A guest opens a link such as #c/DEMO. They see a sealed envelope, open it, read the card, and can reply. It is meant to feel like mail, not a form that starts on the first screen.</p></details>
+    <details><summary>How do guests RSVP?</summary><p>After the card is open they choose Yes, Maybe, or No, add a name, and a headcount up to six. No app. In this demo the reply is stored in the same browser as the card.</p></details>
+    <details><summary>What can I print?</summary><p>Portrait 5×7 inches, from the print dialog or an SVG download. Save as PDF if you want a file without a printer. The on-screen card uses Fraunces; the SVG uses Georgia so it opens anywhere.</p></details>
+    <details><summary>Does the demo charge me?</summary><p>No. The price is written out so a later hosted Celebrio is honest. The demo pass is a flag in this browser. Remove it on the pricing page whenever you want the paywall back.</p></details>
+  </section>
+</div></template>
+<noscript><div class="wrap page"><h1>Cards worth opening.</h1><p>Celebrio needs JavaScript for the editor, the envelope, and replies.</p></div></noscript>
+<footer><div class="wrap">
+  <ul class="trust">
+    <li>Free to design</li>
+    <li>Pay to download or send</li>
+    <li>Demo stays in this browser</li>
+    <li>No account</li>
+  </ul>
+  <div class="cols">
+    <div><strong>Create</strong><a href="#invitations">Invitations</a><a href="#cards">Greeting cards</a><a href="#rsvp">RSVP</a><a href="#pricing">Pricing</a><a href="#guest">Open an envelope</a></div>
+    <div><strong>Occasions</strong><a href="#wedding">Wedding</a><a href="#birthday">Birthday</a><a href="#baby">Baby &amp; kids</a><a href="#party">Party</a></div>
+    <div><strong>Company</strong><a href="#about">About</a><a href="#blog">Journal</a><a href="#contact">Contact</a><a href="#privacy">Privacy</a><a href="#terms">Terms</a></div>
+  </div>
+  <p class="fine">© 2026 Celebrio. A stationery demo you can run locally. Interaction patterns were inspired by a Partyline look-alike exercise; Celebrio is not affiliated with it.</p>
+</div></footer>
+<script>
+(function(){
+var SWATCHES=[
+  ['Lemon','#ffe66d'],['Pink','#ffb3c8'],['Mint','#bfebd7'],['Lilac','#cdb9ff'],['Peach','#ffd2a8'],['Sky','#b7dcff'],
+  ['Marigold','#FFC53D'],['Blush','#F6D7CC'],['Paper','#FFF6EE'],['Coral','#FF4D3A'],['Ink','#2A1420']
+];
+var CATS={
+wedding:{t:'Wedding invitations',n:'Wedding',d:'Invites, save-the-dates, and shower cards. Write it like a letter you would keep.',i:[
+['Elegant','Ana & Leo','Together with their families, they request the pleasure of your company.'],
+['Rustic','Mae & Jon','Barn doors open, boots welcome, and a long table set for yes.'],
+['Floral','Ivy & Sam','Garden vows at noon, petals underfoot, lunch in the shade.'],
+['Modern','Kai & Noor','A short ceremony and a long dinner. Join us for the next chapter.'],
+['Simple','Eli & Rae','We are getting married. We would love you there.'],
+['Beach','Tess & Rio','Toes in the sand, rings on hands, sunset to follow.'],
+['Save the date','Save the date','Ana & Leo are tying the knot. A formal invitation will follow.'],
+['Bridal shower','Bridal shower','Brunch for the bride-to-be. Stories required, gifts optional.'],
+['Letterpress','Pressed in ink','A letterpress evening for June & Adel. Black ink, cream stock, one vow.',10],
+['Wax seal','Sealed with care','Nora & Ellis invite you to an evening closed with a coral seal.',9]
+]},
+birthday:{t:'Birthday invitations',n:'Birthday',d:'First years, milestone bashes, and quiet suppers. Pick a look and make it yours.',i:[
+['Kids','Mia turns 7','Cake, games, and a little too much confetti.'],
+['First year','One year of Theo','Come celebrate the big one. Soft shoes welcome.'],
+['Sweet 16','Sweet 16','Lila’s night to shine. Dancing starts at eight.'],
+['Twenty-one','Cheers to 21','Drinks and dancing for Max. Bring a toast and an ID.'],
+['Thirty','Thirty and thriving','Sam’s decade party. Dinner, then a record on the player.'],
+['Fifty','Fifty and fabulous','Rosa’s golden evening. No gifts, just your company.'],
+['Surprise','Shh, it is a surprise','Do not tell Dad. Arrive ten minutes early and hide the balloons.'],
+['Pool party','Splash into 9','Pool day for Jonah. Towels by the gate.'],
+['Confetti note','Open me','A birthday letter for Amira, written like mail and sealed like it.',6],
+['Supper','A seat for you','Nia’s birthday supper. One table, two cakes, no speech longer than a postcard.',7]
+]},
+baby:{t:'Baby & kids',n:'Baby & kids',d:'Showers, announcements, and the small ceremonies around a new person.',i:[
+['Baby shower','Baby on the way','A shower for Priya. Bring a wish, not a wrapping contest.'],
+['Gender reveal','Boy or girl?','Pop the balloon and see. Cake will settle the debate.'],
+['Sprinkle','A little sprinkle','A small gathering for baby two. There is already a crib.'],
+['Baptism','A blessed day','Noah’s baptism, then lunch in the garden.'],
+['Wild one','Ellie turns one','A first birthday with finger food and a smash cake.'],
+['Announcement','Welcome, Ada','Born May 3, 7 lb 2 oz. Everyone is sleeping, happily.'],
+['Sip and see','Come meet Jude','Tea, a quiet room, and a baby who may be asleep.'],
+['Communion','First communion','Sofia’s day. Family lunch follows the service.'],
+['Blush note','Little one','A short announcement. Names, a date, and one honest detail.',7]
+]},
+party:{t:'Party invitations',n:'Party',d:'Housewarmings, graduations, and every table in between.',i:[
+['Housewarming','New place, new party','Come see the home. Shoes off, stories on.'],
+['Graduation','Class of 2027','Jess is a grad. Caps optional after the photo.'],
+['Dinner','Dinner at eight','A long table and good company. Dietary notes welcome.'],
+['Anniversary','25 years strong','Mark & Dee. A toast, not a production.'],
+['Retirement','Happy retirement','Cheers to Bob’s 30 years. Cake first, then a real dinner.'],
+['Backyard','Backyard BBQ','The grill is hot. Bring a friend, and a salad if you like.'],
+['Brunch','Bubbles and brunch','Sunday at eleven. Kids at the pancake end of the table.'],
+['Holidays','Holiday cheer','Sweaters encouraged. One playlist, many cookies.'],
+['Marigold noon','Sunday on paper','A lunch invite written plainly: time, place, and what to bring.',6]
+]},
+cards:{t:'Greeting cards',n:'Greeting cards',d:'For when a text is too thin and a speech is too much.',i:[
+['Birthday','Happy birthday','Wishing you a year that feels like a good letter.'],
+['Thank you','Thank you','You made an ordinary day kinder. I noticed.'],
+['Get well','Get well soon','Thinking of you. Rest is a respectable plan.'],
+['Anniversary','Happy anniversary','Here is to many more quiet mornings.'],
+['Holidays','Season’s greetings','Warm wishes from our table to yours.'],
+['New baby','Welcome, little one','Congratulations to you both. The world just got softer.'],
+['Congratulations','Congratulations','You did the hard thing. This card is the easy part.'],
+['Good luck','You’ve got this','A note for the night before. We will be in the front row.'],
+['Ink note','A few true words','For the person who does not need a paragraph, just the right line.',10],
+['Marigold thanks','With thanks','A short thank-you. Specific, warm, and done.',6],
+['Blank','Your words here','Write the note you actually mean. The paper can wait.',8]
+]}
+};
+var POSTS=[
+['How to word an invitation people open','Put the occasion in the first line, the date in the second, and one human detail in the third. “Mia turns 7. Saturday, December 12, at 2. There will be cake and a serious game of musical chairs.” Guests can decide from that. Save parking and the registry for the note under the card.'],
+['What stays free','You can browse, rewrite, and preview every Celebrio design without an account. You pay when you want a file to print or a link to send. This demo unlocks those tools in your browser and does not take a card. A hosted version would charge once per card, then stop.'],
+['RSVP lines that do not nag','Ask for yes, maybe, or no, and a name. Give the date you need the answer once. A reminder is a kindness. Three reminders are a different kind of mail. In this demo, replies stay on the device that opened the envelope.']
+];
+var KEY='celebrio.v1',mem=null,magic=null,preferCode='DEMO';
+var app=document.getElementById('app'),home=document.getElementById('v-home');
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function $(id){return document.getElementById(id)}
+function inkOn(hex){
+  var h=String(hex).replace('#','');
+  if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+  var n=parseInt(h,16);if(isNaN(n))return '#2A1420';
+  function lin(c){c/=255;return c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4)}
+  var L=0.2126*lin((n>>16)&255)+0.7152*lin((n>>8)&255)+0.0722*lin(n&255);
+  return L>0.42?'#2A1420':'#FFF6EE';
+}
+function isMat(hex){return inkOn(hex)==='#FFF6EE'}
+function db(){
+  if(mem)return mem;
+  var blank={pass:false,byDesign:{},drafts:{},cards:{}};
+  try{var raw=localStorage.getItem(KEY);mem=raw?JSON.parse(raw):blank}catch(e){mem=blank}
+  if(!mem.cards)mem.cards={};
+  if(!mem.byDesign)mem.byDesign={};
+  if(!mem.drafts)mem.drafts={};
+  if(!mem.cards.DEMO){
+    mem.cards.DEMO={code:'DEMO',id:'birthday-0',cat:'birthday',style:'Kids',h:'Mia turns 7',m:'Cake, games, and a little too much confetti.',d:'Sat, Dec 12 · 2 pm',p:'Maple Park Pavilion',c:'#ffe66d',guests:[['Sam','Yes',2],['Priya','Yes',1],['Jo','Maybe',1],['Dan','No',1]]};
+    persist();
+  }
+  return mem;
+}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(mem))}catch(e){}}
+function pick(st){return {style:st.style,h:st.h,m:st.m,d:st.d||'',p:st.p||'',c:st.c,cat:st.cat}}
+function mint(headline){
+  var letters=(String(headline).toUpperCase().replace(/[^A-Z]/g,'').slice(0,4)||'NOTE');
+  var code,guard=0;
+  do{code=(letters+Math.floor(100+Math.random()*9000)).slice(0,8);guard++}while((code==='DEMO'||db().cards[code])&&guard<20);
+  return code;
+}
+function saveDesign(key,st){
+  var store=db();
+  store.drafts[key]=pick(st);
+  var code=store.byDesign[key];
+  if(code&&store.cards[code]){
+    var guests=store.cards[code].guests||[];
+    store.cards[code]=Object.assign({code:code,id:key,guests:guests},pick(st));
+  }
+  persist();
+}
+function publish(key,st){
+  var store=db();
+  var code=store.byDesign[key];
+  if(!code||!store.cards[code]){
+    code=mint(st.h);
+    store.byDesign[key]=code;
+    store.cards[code]=Object.assign({code:code,id:key,guests:[]},pick(st));
+  }else{
+    var guests=store.cards[code].guests||[];
+    store.cards[code]=Object.assign({code:code,id:key,guests:guests},pick(st));
+  }
+  store.drafts[key]=pick(st);
+  persist();
+  return code;
+}
+function guestUrl(code){return location.href.split('#')[0]+'#c/'+code}
+function markPreview(code){try{sessionStorage.setItem('celebrio.preview',code)}catch(e){}}
+function isPreview(code){try{return sessionStorage.getItem('celebrio.preview')===code}catch(e){return false}}
+function crumb(html){return '<p class="crumb"><a href="#home">Home</a> <span aria-hidden="true">/</span> '+html+'</p>'}
+function el(html){var d=document.createElement('div');d.className='page';d.innerHTML=html;return d}
+function designCount(){var n=0;Object.keys(CATS).forEach(function(k){n+=CATS[k].i.length});return n}
+function sheetInner(st,ids){
+  var meta=st.cat==='cards'?'':((st.d||'')+(st.p?((st.d?' · ':'')+st.p):''));
+  return '<div class="sheet-body"><p class="kicker"'+(ids?' id="p0"':'')+'>'+esc(st.style||'')+'</p><div><h2'+(ids?' id="p1"':'')+'>'+esc(st.h||'')+'</h2><p class="msg"'+(ids?' id="p2"':'')+'>'+esc(st.m||'')+'</p></div><div><div class="dots"></div><p class="meta"'+(ids?' id="p3"':'')+'>'+esc(meta)+'</p><p class="mark">Celebrio</p></div></div>';
+}
+function sheetArticle(st,ids,mini){
+  var mat=isMat(st.c);
+  return '<article class="sheet'+(mini?' mini':'')+(mat?' mat':'')+'" style="background:'+st.c+';color:'+(mat?'#2A1420':inkOn(st.c))+'">'+sheetInner(st,ids)+'</article>';
+}
+function applySheet(sheet,st){
+  var mat=isMat(st.c);
+  sheet.style.background=st.c;
+  sheet.style.color=mat?'#2A1420':inkOn(st.c);
+  sheet.classList.toggle('mat',mat);
+  var meta=st.cat==='cards'?'':((st.d||'')+(st.p?((st.d?' · ':'')+st.p):''));
+  $('p0').textContent=st.style||'';
+  $('p1').textContent=st.h||'';
+  $('p2').textContent=st.m||'';
+  $('p3').textContent=meta;
+}
+function countsFor(card){
+  var c={Yes:0,Maybe:0,No:0};
+  (card.guests||[]).forEach(function(g){if(c[g[1]]!=null)c[g[1]]+=Number(g[2])||0});
+  return c;
+}
+function bindReply(root,code){
+  var sel='Yes';
+  var buttons=root.querySelectorAll('.seg button');
+  var send=root.querySelector('[data-send]');
+  function paint(){
+    var card=db().cards[code];if(!card)return;
+    var c=countsFor(card);
+    root.querySelectorAll('[data-tally]').forEach(function(node){var k=node.getAttribute('data-tally');node.textContent=k+': '+(c[k]||0)});
+    var body=root.querySelector('[data-guests]');
+    if(body){
+      var rows=(card.guests||[]).map(function(g){return '<tr><td>'+esc(g[0])+'</td><td><span class="pill '+esc(g[1])+'">'+esc(g[1])+'</span></td><td>'+esc(g[2])+'</td></tr>'}).join('');
+      body.innerHTML=rows||'<tr><td colspan="3">No replies yet.</td></tr>';
+    }
+  }
+  paint();
+  if(!send)return;
+  buttons.forEach(function(b){b.addEventListener('click',function(){sel=b.getAttribute('data-v');buttons.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')})})});
+  send.addEventListener('click',function(){
+    var nameEl=root.querySelector('[data-name]');
+    var countEl=root.querySelector('[data-count]');
+    var done=root.querySelector('[data-done]');
+    var name=(nameEl.value||'').trim();
+    if(!name){done.textContent='Add your name to send a reply.';return}
+    var g=parseInt(countEl.value,10);if(!g||g<1)g=1;if(g>6)g=6;
+    db().cards[code].guests.push([name,sel,g]);
+    persist();
+    paint();
+    done.textContent='Reply saved: '+sel+' for '+g+'. Thank you, '+name+'.';
+    nameEl.value='';
+  });
+}
+function replyFields(){
+  return '<div class="seg" role="group" aria-label="Your reply"><button type="button" aria-pressed="true" data-v="Yes">Yes</button><button type="button" aria-pressed="false" data-v="Maybe">Maybe</button><button type="button" aria-pressed="false" data-v="No">No</button></div><label>Your name</label><input data-name autocomplete="name" maxlength="60"><label>Guests, including you</label><input data-count type="number" min="1" max="6" value="1"><button class="btn" data-send type="button">Send reply</button><div data-done aria-live="polite"></div><div class="tally" aria-live="polite"><span data-tally="Yes"></span><span data-tally="Maybe"></span><span data-tally="No"></span></div>';
+}
+function bindMagic(root){
+  var f=root.querySelector('#mf');if(!f)return;
+  var preview=root.querySelector('#preview');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ev=(root.querySelector('#ev').value||'').trim()||'our celebration';
+    var tone=root.querySelector('#tone').value;
+    var lines={
+      Playful:'You are invited to '+ev+'. There will be cake, a little noise, and a seat with your name on it. Tell us if you can come.',
+      Elegant:'You are warmly invited to '+ev+'. It would mean a great deal to have you with us. Kindly reply when you can.',
+      Simple:'Please join us for '+ev+'. The date and place are on the card. A yes, maybe, or no is plenty.'
+    };
+    magic={h:ev,m:lines[tone]||lines.Simple};
+    preview.textContent=magic.m+' ';
+    var a=document.createElement('a');
+    a.href='#design-birthday-0';
+    a.textContent='Use this in a design';
+    a.addEventListener('click',function(evn){
+      if((location.hash||'')==='#design-birthday-0'){evn.preventDefault();route()}
+    });
+    preview.appendChild(a);
+  });
+}
+
+/* Byte-mode QR, ECC M, mask 0. Matches a known encoder on versions 1–6. */
+function gfMul(x,y){var z=0;for(var i=7;i>=0;i--){z=(z<<1)^((z>>>7)&1?0x11d:0);if((y>>>i)&1)z^=x}return z&255}
+function rsDivisor(degree){var result=[];for(var i=0;i<degree;i++)result.push(0);result[degree-1]=1;var root=1;for(var i=0;i<degree;i++){for(var j=0;j<degree;j++){result[j]=gfMul(result[j],root);if(j+1<degree)result[j]^=result[j+1]}root=gfMul(root,2)}return result}
+function rsRemainder(data,degree){var divisor=rsDivisor(degree);var result=divisor.map(function(){return 0});data.forEach(function(b){var factor=b^result.shift();result.push(0);for(var i=0;i<divisor.length;i++)result[i]^=gfMul(divisor[i],factor)});return result}
+var QM={1:{ec:10,blocks:1},2:{ec:16,blocks:1},3:{ec:26,blocks:1},4:{ec:18,blocks:2},5:{ec:24,blocks:2},6:{ec:16,blocks:4}};
+function rawModules(ver){var result=(16*ver+128)*ver+64;if(ver>=2){var numalign=Math.floor(ver/7)+2;result-=(25*numalign-10)*numalign-55;if(ver>=7)result-=36}return result}
+function dataCodewords(ver){return Math.floor(rawModules(ver)/8)-QM[ver].ec*QM[ver].blocks}
+function alignPos(ver,size){if(ver===1)return [];var n=Math.floor(ver/7)+2;var step=Math.floor((ver*8+n*3+5)/(n*4-4))*2;var result=[];for(var i=0;i<n-1;i++)result.push(size-7-i*step);result.push(6);return result.reverse()}
+function buildData(text,capacity){var bits=[];function put(val,len){for(var i=len-1;i>=0;i--)bits.push((val>>>i)&1)}var data=[];for(var i=0;i<text.length;i++)data.push(text.charCodeAt(i)&255);put(0x4,4);put(data.length,8);data.forEach(function(b){put(b,8)});var capBits=capacity*8;put(0,Math.min(4,Math.max(0,capBits-bits.length)));while(bits.length%8)bits.push(0);var pads=[0xec,0x11],pi=0;while(bits.length+8<=capBits){put(pads[pi],8);pi^=1}var out=[];for(var i=0;i<bits.length;i+=8){var b=0;for(var k=0;k<8;k++)b=(b<<1)|bits[i+k];out.push(b)}return out}
+function interleave(data,ver){var spec=QM[ver];var raw=Math.floor(rawModules(ver)/8);var shortCount=spec.blocks-(raw%spec.blocks);var shortLen=Math.floor(raw/spec.blocks);var blocks=[],k=0;for(var i=0;i<spec.blocks;i++){var len=shortLen-spec.ec+(i<shortCount?0:1);var dat=data.slice(k,k+len);k+=len;var ecc=rsRemainder(dat,spec.ec);if(i<shortCount)dat=dat.concat([0]);blocks.push({dat:dat,ecc:ecc,short:i<shortCount})}var out=[],rows=blocks[0].dat.length;for(var r=0;r<rows;r++){for(var b=0;b<blocks.length;b++){if(r===shortLen-spec.ec&&blocks[b].short)continue;out.push(blocks[b].dat[r])}}for(var e=0;e<spec.ec;e++){for(var b2=0;b2<blocks.length;b2++)out.push(blocks[b2].ecc[e])}return out}
+function formatBits(mask){var data=mask,rem=data;for(var i=0;i<10;i++)rem=(rem<<1)^((rem>>>9)&1?0x537:0);return ((data<<10)|(rem&0x3ff))^0x5412}
+function qrMatrix(text){
+  var mask=0,ver=0,cap=0;
+  for(var v=1;v<=6;v++){cap=dataCodewords(v);if(text.length<=cap-2){ver=v;break}}
+  if(!ver)return null;
+  var size=17+4*ver,modules=[],reserved=[];
+  for(var y=0;y<size;y++){modules.push([]);reserved.push([]);for(var x=0;x<size;x++){modules[y].push(0);reserved[y].push(0)}}
+  function setF(x,y,dark){modules[y][x]=dark?1:0;reserved[y][x]=1}
+  for(var i=0;i<size;i++){setF(i,6,i%2===0);setF(6,i,i%2===0)}
+  function finder(cx,cy){for(var dy=-4;dy<=4;dy++){for(var dx=-4;dx<=4;dx++){var x=cx+dx,y=cy+dy;if(x<0||y<0||x>=size||y>=size)continue;var dist=Math.max(Math.abs(dx),Math.abs(dy));setF(x,y,dist!==2&&dist!==4)}}}
+  finder(3,3);finder(size-4,3);finder(3,size-4);
+  var pos=alignPos(ver,size),skips={'0,0':1};skips['0,'+(pos.length-1)]=1;skips[(pos.length-1)+',0']=1;
+  for(var a=0;a<pos.length;a++){for(var b=0;b<pos.length;b++){if(skips[a+','+b])continue;for(var dy=-2;dy<=2;dy++){for(var dx=-2;dx<=2;dx++){setF(pos[b]+dx,pos[a]+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1)}}}}
+  for(var f=0;f<6;f++)reserved[f][8]=1;
+  reserved[7][8]=1;reserved[8][8]=1;reserved[8][7]=1;
+  for(var f2=9;f2<15;f2++)reserved[8][14-f2]=1;
+  for(var f3=0;f3<8;f3++)reserved[8][size-1-f3]=1;
+  for(var f4=8;f4<15;f4++)reserved[size-15+f4][8]=1;
+  reserved[size-8][8]=1;
+  var codewords=interleave(buildData(text,cap),ver),bitIndex=0;
+  for(var right0=size-1;right0>0;right0-=2){var right=right0;if(right<=6)right-=1;for(var vert=0;vert<size;vert++){for(var j=0;j<2;j++){var x=right-j;var upward=((right+1)&2)===0;var yy=upward?size-1-vert:vert;if(!reserved[yy][x]&&bitIndex<codewords.length*8){modules[yy][x]=(codewords[bitIndex>>3]>>>(7-(bitIndex&7)))&1;bitIndex++}}}}
+  for(var my=0;my<size;my++){for(var mx=0;mx<size;mx++){if(!reserved[my][mx]&&((mx+my)%2)===0)modules[my][mx]^=1}}
+  var bits=formatBits(mask);function getBit(i){return (bits>>>i)&1}
+  for(var i2=0;i2<6;i2++)setF(8,i2,getBit(i2));
+  setF(8,7,getBit(6));setF(8,8,getBit(7));setF(7,8,getBit(8));
+  for(var i3=9;i3<15;i3++)setF(14-i3,8,getBit(i3));
+  for(var i4=0;i4<8;i4++)setF(size-1-i4,8,getBit(i4));
+  for(var i5=8;i5<15;i5++)setF(8,size-15+i5,getBit(i5));
+  setF(8,size-8,1);
+  return modules;
+}
+function qrSvg(text){
+  try{
+    var m=qrMatrix(text);if(!m)return '';
+    var n=m.length,q=4,dim=n+q*2,rects=[];
+    for(var y=0;y<n;y++)for(var x=0;x<n;x++)if(m[y][x])rects.push('<rect x="'+(x+q)+'" y="'+(y+q)+'" width="1" height="1"/>');
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+dim+' '+dim+'" role="img" aria-label="QR code for the guest link"><rect width="'+dim+'" height="'+dim+'" fill="#FFF6EE"/><g fill="#2A1420">'+rects.join('')+'</g></svg>';
+  }catch(e){return ''}
+}
+function wrapLines(text,max){
+  var words=String(text||'').split(/\s+/),lines=[],cur='';
+  words.forEach(function(w){if(!w)return;var next=cur?cur+' '+w:w;if(next.length>max&&cur){lines.push(cur);cur=w}else cur=next});
+  if(cur)lines.push(cur);return lines.slice(0,8);
+}
+function downloadCard(st){
+  var mat=isMat(st.c),fg=mat?'#2A1420':inkOn(st.c),w=500,h=700;
+  var head=wrapLines(st.h,18),msg=wrapLines(st.m,32);
+  var meta=st.cat==='cards'?'':((st.d||'')+(st.p?((st.d?' · ':'')+st.p):''));
+  var svg=['<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">','<rect width="'+w+'" height="'+h+'" rx="28" fill="'+st.c+'"/>'];
+  var x=40,textFill=fg;
+  if(mat){svg.push('<rect x="28" y="28" width="444" height="644" rx="18" fill="#FFF6EE"/>');textFill='#2A1420'}
+  svg.push('<text x="'+x+'" y="78" fill="'+textFill+'" font-family="Georgia,serif" font-size="14" letter-spacing="3">'+esc(String(st.style||'').toUpperCase())+'</text>');
+  var y=170;
+  head.forEach(function(line){svg.push('<text x="'+x+'" y="'+y+'" fill="'+textFill+'" font-family="Georgia,serif" font-size="40">'+esc(line)+'</text>');y+=48});
+  y+=16;
+  msg.forEach(function(line){svg.push('<text x="'+x+'" y="'+y+'" fill="'+textFill+'" font-family="Georgia,serif" font-size="20">'+esc(line)+'</text>');y+=28});
+  if(meta)svg.push('<text x="'+x+'" y="630" fill="'+textFill+'" font-family="Georgia,serif" font-size="16">'+esc(meta)+'</text>');
+  svg.push('<text x="'+x+'" y="666" fill="'+textFill+'" font-family="Georgia,serif" font-style="italic" font-size="16">Celebrio</text></svg>');
+  var blob=new Blob([svg.join('')],{type:'image/svg+xml'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='celebrio-'+(st.h||'card').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)+'.svg';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(function(){URL.revokeObjectURL(a.href)},1500);
+}
+function copyText(text,done){
+  function ok(){done.textContent='Link copied.'}
+  function fail(){done.textContent='Select the link above and copy it from there.'}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fail)}else fail();
+}
+function shareHtml(url){
+  var svg=qrSvg(url);
+  var qr=svg?('<div class="qr">'+svg+'</div>'):'<div class="qr" style="padding:16px"><p class="meta">This link is a little long for the demo QR. Copy it instead. The code is a placeholder, not a scannable mark.</p><svg viewBox="0 0 21 21" aria-hidden="true"><rect width="21" height="21" fill="#FFF6EE"/><path fill="#2A1420" d="M0 0h7v7H0zM14 0h7v7h-7zM0 14h7v7H0zM2 2h3v3H2zM16 2h3v3h-3zM2 16h3v3H2z"/></svg></div>';
+  return '<div class="sharebox" id="sharebox"><h3>Ready to share</h3><p class="meta">Guest link. Nothing was charged. This opens the envelope in this browser. A hosted Celebrio would open the same kind of link on a guest’s phone.</p><code class="url" id="guest-url">'+esc(url)+'</code>'+qr+'<div class="row"><button class="btn" id="cp" type="button">Copy link</button><button class="btn alt" id="dl" type="button">Download SVG</button><button class="btn alt" id="pr" type="button">Print</button><button class="btn tiny" id="drop-pass" type="button">Remove demo pass</button></div><div data-done aria-live="polite"></div><p class="meta">The SVG is set in Georgia so it opens without webfonts. Print uses the card on screen, at 5×7 inches.</p></div>';
+}
+function gateHtml(){
+  return '<div class="gate" id="gate" hidden><h3>Download and sending are paid</h3><p>Designing stays free, including if you close this note and keep editing. A Celebrio pass is <strong>$12 once for this card</strong> when payments exist. It covers a print file, home printing, a guest link, and a QR code.</p><p>In this demo the pass is a switch on this device. It does not charge a card, start a trial, or renew.</p><div class="row"><button class="btn" id="unlock" type="button">Unlock demo on this device</button><a class="btn alt" href="#pricing">See pricing</a><button class="btn tiny" id="dismiss" type="button">Keep editing</button></div></div>';
+}
+function envelopeHtml(){
+  return '<div class="env" id="env"><div class="env-back"></div><div class="env-liner"></div><div class="env-pocket"></div><div class="env-flap"></div><div class="wax" aria-hidden="true">C</div></div>';
+}
+
+function catView(k){
+  var c=CATS[k];
+  var cards=c.i.map(function(it,i){
+    var color=SWATCHES[(it.length>3?it[3]:i)%SWATCHES.length][1];
+    var st={style:it[0],h:it[1],m:it[2],c:color,cat:k,d:'',p:''};
+    return '<a class="tcard" href="#design-'+k+'-'+i+'">'+sheetArticle(st,false,true)+'<span>Customize '+esc(it[0])+'</span></a>';
+  }).join('');
+  app.appendChild(el(crumb(esc(c.n))+'<h1>'+esc(c.t)+'</h1><p>'+esc(c.d)+' '+c.i.length+' designs. Customizing is free.</p><div class="tgrid">'+cards+'</div><p>Want different words? <a href="#magic"><strong>Try Magic invite</strong></a>.</p>'));
+}
+function invView(){
+  var tiles=['wedding','birthday','baby','party','cards'].map(function(k,i){
+    var bg=['#F6D7CC','#FFC53D','#fffdfb','#ffe1d4','#FFF6EE'][i];
+    return '<a class="promo" style="background:'+bg+'" href="#'+k+'"><h3>'+esc(CATS[k].t)+'</h3><span>'+CATS[k].i.length+' designs</span></a>';
+  }).join('');
+  app.appendChild(el(crumb('Invitations')+'<h1>All invitations</h1><p>'+designCount()+' designs across five occasions. Open a shelf, then make one card yours.</p><div class="grid" style="margin-top:22px">'+tiles+'</div>'));
+}
+function designView(k,i){
+  var c=CATS[k],it=c.i[i],key=k+'-'+i,store=db();
+  var color=SWATCHES[(it.length>3?it[3]:i)%SWATCHES.length][1];
+  var base={style:it[0],h:it[1],m:it[2],d:'Sat, Dec 12 · 2 pm',p:'Maple Park Pavilion',c:color,cat:k};
+  var st=Object.assign({},base,store.drafts[key]||{});
+  st.cat=k;st.style=it[0];
+  if(magic){st.h=magic.h||st.h;st.m=magic.m||st.m;magic=null}
+  var isCard=k==='cards';
+  var sw=SWATCHES.map(function(s){
+    var on=s[1].toLowerCase()===String(st.c).toLowerCase();
+    return '<button type="button" aria-label="'+esc(s[0])+'" aria-pressed="'+(on?'true':'false')+'" data-c="'+s[1]+'" style="background:'+s[1]+'"></button>';
+  }).join('');
+  var paid=store.pass?'':' <span class="tag">Paid</span>';
+  var fields='<label for="e1">Headline</label><input id="e1" maxlength="60" value="'+esc(st.h)+'"><label for="e2">Message</label><input id="e2" maxlength="180" value="'+esc(st.m)+'">'+(isCard?'':'<label for="e3">Date and time</label><input id="e3" maxlength="60" value="'+esc(st.d)+'"><label for="e4">Place</label><input id="e4" maxlength="60" value="'+esc(st.p)+'">')+'<label>Color <span id="cname" class="meta"></span></label><div class="sw">'+sw+'</div>';
+  app.appendChild(el(crumb('<a href="#'+k+'">'+esc(c.n)+'</a> <span aria-hidden="true">/</span> '+esc(it[0]))+'<h1 class="no-print">'+esc(it[0])+'</h1><p class="no-print">Edits show on the card as you type. Rewriting is free. Download, print, and the guest link wait for a pass.</p><div class="ed"><div id="print-card-wrap">'+sheetArticle(st,true,false).replace('class="sheet','id="print-card" class="sheet')+'</div><div class="panel no-print"><h3>Customize</h3><p class="meta">Changes stay on this device.</p>'+fields+'<div class="row"><button class="btn" id="preview" type="button">Preview envelope</button><button class="btn alt" id="download" type="button">Download SVG'+paid+'</button><button class="btn alt" id="print" type="button">Print'+paid+'</button><button class="btn alt" id="share" type="button">Share link'+paid+'</button><a class="btn alt" id="to-rsvp" href="#rsvp">Collect RSVPs</a><a class="btn tiny" href="#'+k+'">Back to designs</a></div>'+gateHtml()+'<div id="share-slot"></div><p class="meta" id="pass-note"'+(store.pass?'':' hidden')+'>Demo pass is on for this browser. No payment was taken.</p></div></div>'));
+  var sheet=$('print-card');
+  function paint(){applySheet(sheet,st);var name='Custom';SWATCHES.forEach(function(s){if(s[1].toLowerCase()===String(st.c).toLowerCase())name=s[0]});$('cname').textContent=name}
+  function remember(){saveDesign(key,st)}
+  [['e1','h'],['e2','m'],['e3','d'],['e4','p']].forEach(function(pair){var node=$(pair[0]);if(node)node.addEventListener('input',function(){st[pair[1]]=node.value;paint();remember()})});
+  document.querySelectorAll('.sw button').forEach(function(b){b.addEventListener('click',function(){st.c=b.getAttribute('data-c');document.querySelectorAll('.sw button').forEach(function(y){y.setAttribute('aria-pressed',y===b?'true':'false')});paint();remember()})});
+  function showShare(code){
+    var slot=$('share-slot');
+    slot.innerHTML=shareHtml(guestUrl(code));
+    $('cp').addEventListener('click',function(){copyText(guestUrl(code),slot.querySelector('[data-done]'))});
+    $('dl').addEventListener('click',function(){downloadCard(st)});
+    $('pr').addEventListener('click',function(){window.print()});
+    $('drop-pass').addEventListener('click',function(){db().pass=false;persist();route()});
+  }
+  function ensure(){return publish(key,st)}
+  function needPass(fn){return function(){if(!db().pass){$('gate').hidden=false;return}fn()}}
+  $('preview').addEventListener('click',function(){var code=ensure();markPreview(code);location.hash='#c/'+code});
+  $('download').addEventListener('click',needPass(function(){var code=ensure();downloadCard(st);showShare(code)}));
+  $('print').addEventListener('click',needPass(function(){ensure();window.print()}));
+  $('share').addEventListener('click',needPass(function(){showShare(ensure())}));
+  $('to-rsvp').addEventListener('click',function(){preferCode=ensure()});
+  $('unlock').addEventListener('click',function(){
+    db().pass=true;persist();
+    document.querySelectorAll('.tag').forEach(function(t){t.remove()});
+    $('gate').hidden=true;$('pass-note').hidden=false;
+    showShare(ensure());
+  });
+  $('dismiss').addEventListener('click',function(){$('gate').hidden=true});
+  paint();
+  if(db().pass&&db().byDesign[key])showShare(db().byDesign[key]);
+}
+function rsvpView(){
+  var store=db();
+  var codes=Object.keys(store.cards).sort(function(a,b){if(a==='DEMO')return -1;if(b==='DEMO')return 1;return a.localeCompare(b)});
+  if(codes.indexOf(preferCode)<0)preferCode='DEMO';
+  var options=codes.map(function(code){var card=store.cards[code];return '<option value="'+esc(code)+'"'+(code===preferCode?' selected':'')+'>'+esc(card.h)+' · '+esc(code)+'</option>'}).join('');
+  app.appendChild(el(crumb('RSVP')+'<h1>Online RSVP</h1><p>Guests reply from the envelope. You see every answer saved on this device. Deadlines and reminder mail are not switches here.</p><label for="which">Which card</label><select id="which">'+options+'</select><div id="rsvp-root"></div><h2>Later, when cards are hosted</h2><p class="meta">These are not controls in the demo.</p><div class="grid"><div class="promo p1"><h3>Deadlines</h3><span>Close replies on a date you choose.</span></div><div class="promo p2"><h3>Guest limits</h3><span>Cap how many each invite can bring.</span></div><div class="promo p3"><h3>Reminders</h3><span>One nudge for people who have not replied.</span></div></div>'));
+  function render(code){
+    preferCode=code;
+    var card=db().cards[code];
+    var root=$('rsvp-root');
+    root.innerHTML='<div class="rsvp" style="margin-top:22px"><div><h2>'+esc(card.h)+'</h2><p class="sub">'+esc(card.cat==='cards'?'A greeting card. Replies are optional.':((card.d||'')+(card.p?' · '+card.p:'')))+'</p><p><a href="#c/'+esc(code)+'">Open the envelope</a></p></div><div class="panel"><h3>Reply</h3><p class="meta">Same questions a guest sees.</p>'+replyFields()+'</div></div><h2>Guest list</h2><div class="panel gl-wrap"><table class="gl"><thead><tr><th>Name</th><th>Reply</th><th>Guests</th></tr></thead><tbody data-guests></tbody></table></div>';
+    bindReply(root,code);
+  }
+  $('which').addEventListener('change',function(){render($('which').value)});
+  render(preferCode);
+}
+function aboutView(){
+  app.appendChild(el(crumb('About')+'<h1>About Celebrio</h1><div class="prose"><p>Celebrio is a stationery desk for invitations and greeting cards. The promise is small on purpose: a card worth opening, then a reply.</p><p>You can design anything here without paying. Download, print, and sending a guest link are the paid part, and the pages say so before you reach them. This demo keeps your cards and replies in the browser. Nothing is sent to a server.</p><p>Names on the sample cards are fictional. The desk is the product, not a pretend storefront with a street address.</p></div><div class="grid" style="margin-top:22px"><div class="promo p1"><h3>Free to design</h3><span>No account to rewrite a card.</span></div><div class="promo p2"><h3>Clear when it costs</h3><span>$12 once per card, later. Demo unlock is local.</span></div><div class="promo p3"><h3>One envelope</h3><span>Guests open mail, then answer.</span></div></div>'));
+}
+function blogView(){
+  app.appendChild(el(crumb('Journal')+'<h1>Notes from the desk</h1><p>Short writing on wording, money, and replies.</p>'+POSTS.map(function(p){return '<details><summary>'+esc(p[0])+'</summary><p>'+esc(p[1])+'</p></details>'}).join('')));
+}
+function contactView(){
+  app.appendChild(el(crumb('Contact')+'<h1>Contact</h1><p>Questions about a card or this demo: hello@celebrio.example. The form stays in the browser. It does not send email.</p><div class="panel" style="max-width:560px;margin-top:18px"><label for="cn">Name</label><input id="cn" autocomplete="name"><label for="ce">Email</label><input id="ce" type="email" autocomplete="email"><label for="cm">Message</label><textarea id="cm"></textarea><button class="btn" id="cs" type="button">Send message</button><div data-done id="cdone" aria-live="polite"></div></div>'));
+  $('cs').addEventListener('click',function(){
+    var n=$('cn').value.trim(),e=$('ce').value.trim(),m=$('cm').value.trim(),d=$('cdone');
+    d.textContent=(!n||!e||!m)?'Add your name, email, and a message.':'Thank you, '+n+'. This demo does not send email, so nothing left your browser.';
+  });
+}
+function pricingView(){
+  var on=db().pass;
+  app.appendChild(el(crumb('Pricing')+'<h1>Pricing</h1><p>Make as many cards as you like. Pay when a card leaves the desk — as a file, a print, or a link. No countdown and no bundle you did not ask for.</p><div class="prices"><article class="price"><p class="eyebrow">Studio</p><b class="amt">$0</b><p>For designing.</p><ul><li>All '+designCount()+' designs</li><li>Live wording, date, place, and color</li><li>Magic invite</li><li>Envelope preview on this device</li></ul></article><article class="price paid"><p class="eyebrow">Send &amp; keep</p><b class="amt">$12</b><p>Once per card, when payments are live.</p><ul><li>SVG download</li><li>Print at home, 5×7</li><li>Guest link and QR code</li><li>RSVP list for that card</li></ul></article></div><div class="callout" id="pass-state"><strong>'+(on?'Demo pass is on for this browser.':'No demo pass on this browser yet.')+'</strong> Unlock stores a flag in local storage. It does not open a payment form.</div><div class="row"><button class="btn" id="unlock-page" type="button">Unlock demo on this device</button><button class="btn alt" id="lock-page" type="button">Remove demo pass</button><a class="btn tiny" href="#faq">Read the free-versus-paid answer</a></div>'));
+  function paint(){var on=db().pass;$('pass-state').innerHTML='<strong>'+(on?'Demo pass is on for this browser.':'No demo pass on this browser yet.')+'</strong> Unlock stores a flag in local storage. It does not open a payment form.'}
+  $('unlock-page').addEventListener('click',function(){db().pass=true;persist();paint()});
+  $('lock-page').addEventListener('click',function(){db().pass=false;persist();paint()});
+}
+function privacyView(){
+  app.appendChild(el(crumb('Privacy')+'<h1>Privacy</h1><div class="prose"><p>This demo stores your cards, replies, and the demo pass in local storage on your device, under the key celebrio.v1. A host preview uses session storage so the note does not follow a shared tab by itself.</p><p>There is no account, no payment form, and no server receiving the guest list. Clearing site data for this origin deletes the demo.</p><p>A live Celebrio would need an email to send a receipt, and would host the guest link so it opens on someone else’s phone. It should not sell the guest list. This page would be rewritten before that existed.</p><p>Questions: hello@celebrio.example.</p></div>'));
+}
+function termsView(){
+  app.appendChild(el(crumb('Terms')+'<h1>Terms</h1><div class="prose"><p>Celebrio here is a demonstration you can run locally. Designing is free. The $12 pass describes a future price. The demo unlock does not charge you.</p><p>Sample names on the cards are fictional. Do not use the demo to collect replies from people who have not agreed to a local-only toy. Words you write are yours.</p><p>The demo is provided as-is, without a warranty. It is not affiliated with any other invitation product.</p></div>'));
+}
+function lobbyView(){
+  var store=db();
+  var links=Object.keys(store.cards).map(function(code){
+    var card=store.cards[code];
+    return '<a href="#c/'+esc(code)+'"><span>'+esc(card.h)+'</span><span>'+esc(code)+'</span></a>';
+  }).join('');
+  app.appendChild(el(crumb('Envelope')+'<h1>Open an envelope</h1><p>Enter a code, or open the sample. Cards you have designed on this device are listed below.</p><form id="code-form" class="panel" style="max-width:560px"><label for="code">Envelope code</label><div class="joiner"><input id="code" maxlength="12" placeholder="DEMO" autocapitalize="characters"><button class="btn" type="submit">Open</button></div></form><div class="note-list">'+links+'</div>'));
+  $('code-form').addEventListener('submit',function(e){e.preventDefault();var code=($('code').value||'').trim().toUpperCase();if(!code)return;location.hash='#c/'+encodeURIComponent(code)});
+}
+function guestView(code){
+  code=String(code||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+  var card=db().cards[code];
+  if(!card){
+    app.appendChild(el(crumb('Envelope')+'<h1>This envelope is not on this device</h1><p>Demo cards live in this browser. If a friend sent a link from their own computer, it will not open here until Celebrio hosts cards. The sample envelope is always available.</p><div class="row"><a class="btn" href="#c/DEMO">Open the sample</a><a class="btn alt" href="#guest">Enter a code</a></div>'));
+    return;
+  }
+  var preview=isPreview(code);
+  var meta=card.cat==='cards'?'A greeting card':((card.d||'')+(card.p?' · '+card.p:''));
+  app.appendChild(el(crumb('Envelope')+'<p class="eyebrow">A card for you</p><h1>'+esc(card.h)+'</h1><p class="lede">'+esc(meta)+'</p>'+(preview?'<div class="callout no-print">Host preview. Guests do not see this note. Sharing the link is part of the paid pass.</div>':'')+'<div class="mail" id="mail">'+envelopeHtml()+'<div class="letter-reveal" id="letter-reveal" hidden>'+sheetArticle(card,false,false)+'</div><div class="mail-actions no-print"><button class="btn" id="open-mail" type="button" aria-expanded="false">Open the envelope</button></div></div><div id="after" class="no-print" hidden></div>'));
+  $('open-mail').addEventListener('click',function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reveal=$('letter-reveal');
+    reveal.hidden=false;
+    $('open-mail').setAttribute('aria-expanded','true');
+    function done(){
+      $('mail').classList.add('is-open');
+      $('open-mail').hidden=true;
+      document.body.classList.add('has-card');
+      var canPrint=db().pass||!preview;
+      var after=$('after');
+      after.hidden=false;
+      if(card.cat==='cards'){
+        after.innerHTML='<div class="panel"><h3>A greeting card</h3><p class="meta">No reply is required. Read it, and keep it if you like.</p>'+(canPrint?'<button class="btn alt" id="guest-print" type="button">Print this card</button>':'<p class="meta">Printing a host preview is part of the pass.</p>')+'</div>';
+      }else{
+        after.innerHTML='<div class="panel"><h3>Will you come?</h3><p class="meta">Yes, maybe, or no. A name is enough. This demo saves the reply in this browser, for the host list on this device.</p>'+replyFields()+(canPrint?'<div class="row"><button class="btn alt" id="guest-print" type="button">Print this card</button></div>':'<p class="meta">Printing a host preview is part of the pass. Unlock it from the card editor.</p>')+'</div>';
+        bindReply(after,code);
+      }
+      var gp=$('guest-print');if(gp)gp.addEventListener('click',function(){window.print()});
+      var h=reveal.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}
+    }
+    if(reduce)done();else requestAnimationFrame(function(){requestAnimationFrame(done)});
+  });
+}
+function setNav(key){
+  document.querySelectorAll('nav a').forEach(function(a){
+    a.removeAttribute('aria-current');
+    if(key&&a.getAttribute('href')==='#'+key)a.setAttribute('aria-current','page');
+  });
+}
+function route(){
+  var raw=decodeURIComponent((location.hash||'#home').slice(1))||'home';
+  var bits=raw.split('/');
+  var key=bits[0]||'home';
+  var arg=bits[1]||'';
+  var design=/^design-([a-z]+)-(\d+)$/.exec(key);
+  app.replaceChildren();
+  document.body.classList.remove('has-card');
+  var title='Cards worth opening',nav='',homePage=false,anchor='';
+  if(CATS[key]){catView(key);title=CATS[key].t;nav=key}
+  else if(design&&CATS[design[1]]){
+    var idx=+design[2];
+    if(CATS[design[1]].i[idx]){designView(design[1],idx);title='Customize '+CATS[design[1]].i[idx][0];document.body.classList.add('has-card')}
+    else {catView(design[1]);title=CATS[design[1]].t}
+    nav=design[1];
+  }
+  else if(key==='invitations'){invView();title='Invitations'}
+  else if(key==='rsvp'){rsvpView();title='RSVP';nav='rsvp'}
+  else if(key==='about'){aboutView();title='About'}
+  else if(key==='blog'){blogView();title='Journal'}
+  else if(key==='contact'){contactView();title='Contact'}
+  else if(key==='pricing'){pricingView();title='Pricing';nav='pricing'}
+  else if(key==='privacy'){privacyView();title='Privacy'}
+  else if(key==='terms'){termsView();title='Terms'}
+  else if(key==='guest'&&!arg){lobbyView();title='Open an envelope'}
+  else if((key==='c'||key==='guest')&&arg){guestView(arg);title='Your envelope'}
+  else{
+    homePage=true;
+    app.appendChild(home.content.cloneNode(true));
+    bindMagic(app);bindReply(app,'DEMO');
+    if(key==='magic'||key==='browse')anchor=key;
+  }
+  document.title=homePage?'Celebrio — Cards worth opening':title+' · Celebrio';
+  setNav(nav);
+  if(anchor){var node=document.getElementById(anchor);if(node)node.scrollIntoView();else window.scrollTo(0,0)}
+  else window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route();
+})();
+</script>
+</body>
+</html>
