@@ -14,9 +14,13 @@ python3 -m http.server 47321
 
 Then open [http://127.0.0.1:47321/](http://127.0.0.1:47321/). Any static server works. Opening `index.html` directly also works for the hash routes; a local server is kinder to the clipboard and the print dialog.
 
+## Design
+
+Clean and chic: cream, oxblood and black, Inter Tight two-tone headlines, Fraunces inside the cards. Fonts are self-hosted in `assets/fonts/`. Rules live in [TASTE.md](TASTE.md).
+
 ## Five-minute tour
 
-1. **Home** — [http://127.0.0.1:47321/#home](http://127.0.0.1:47321/#home). The hero, category chips, Magic invite, and the sample RSVP.
+1. **Home** — [http://127.0.0.1:47321/#home](http://127.0.0.1:47321/#home). Hero with real card designs, the oxblood statement and honest stats, features, occasion tiles, Magic invite, the sample RSVP, pricing, and FAQ.
 2. **A shelf** — [Birthday](http://127.0.0.1:47321/#birthday), or Wedding, Baby & kids, Party, Greeting cards. About 49 designs.
 3. **Customize** — open any card, for example [Mia’s birthday](http://127.0.0.1:47321/#design-birthday-0). Headline, message, date, place, and color update the preview as you type.
 4. **Magic invite** — [http://127.0.0.1:47321/#magic](http://127.0.0.1:47321/#magic). Pick a tone, write the invite, then **Use this in a design**.
